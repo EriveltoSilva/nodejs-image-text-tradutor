@@ -1,0 +1,71 @@
+<html lang="pt-pt">
+    <head>
+        
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Reconhecimento e Tradução de Texto</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"/>
+        <link rel="stylesheet" href="estilo.css">
+        
+    </head>
+    
+    <body>
+        <header>Reconhecimento e Tradução de Texto</header>
+        
+        <div class="contentor">
+
+            <div class="contentor-imagem" id="divImagem">
+                <img id="imagemProcessada" src="" alt="">
+                
+                <div class="contentor-progresso">
+                    <span>Processando Imagem:
+                        <span id="valorProgresso"></span>
+                    </span>
+                    <div id = "progresso">1</div>
+                </div>
+            </div>
+
+            <div class="contentor-traducao">
+                <div>
+                    <p>De:</p> 
+                    <select> </select>
+                </div>
+                <textarea  disabled id="textareaDe" placeholder="Texto a extrair-se da Imagem" cols="20" rows="10"></textarea>    
+             
+                <div class="contentor-icones">
+                    <div id="altoFalanteDe"  class="icone"><img src="./Imagens/altoFalante2.png" alt="" class="imgIcones"> </div>
+                    <div id="copiarDe" class="icone"><img src="./Imagens/copiar2.png" alt=""class="imgIcones" ></div>
+                </div>
+                
+            </div>
+
+            <div class="contentor-traducao">
+                <div >
+                    <p>Para:</p> 
+                    <select> </select>
+                </div>
+                <textarea id="textareaPara" placeholder="Texto a se traduzir" cols="20" rows="10"></textarea>   
+                <div class="contentor-icones">
+                    <div id="altoFalantePara"  class="icone"><img src="./Imagens/altoFalante2.png" alt="" class="imgIcones"> </div>
+                    <div id="copiarPara" class="icone"><img src="./Imagens/copiar2.png" alt="" class="imgIcones"></div>
+                </div> 
+                        
+            </div>
+
+            <div class="contentor-botoes">
+                
+                <label class="botoes bloco" for="botaoUpload">Upload</label>
+                <input style="display: none;" type="file"  id="botaoUpload">
+                <div class="botoes" id="botaoProcessarImagem"> Imaginalizar</div>
+                <div class="botoes" id="botaoTraduzir"> Traduzir</div>
+                <div class="botoes" id="botaoClear">Clear</div>
+            </div>
+
+            
+        
+        <script src="paises.js"></script>
+        <script src="https://unpkg.com/tesseract.js@v2.0.0-alpha.13/dist/tesseract.min.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>

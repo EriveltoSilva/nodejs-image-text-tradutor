@@ -1,4 +1,3 @@
-const divImagem     = document.getElementById("divImagem");
 const imagem        = document.getElementById("imagemProcessada");
 const selectTag     = document.querySelectorAll("select");
 const SelectorFicheiro   = document.getElementById("botaoUpload");
@@ -20,17 +19,12 @@ SelectorFicheiro.onchange = () =>{
     //var imagemURL =  window.URL.createObjectURL(new Blob([ficheiro], {type:'image/jpg'}));
     var imagemURL = URL.createObjectURL(ficheiro);
     imagem.src = imagemURL;
-    divImagem.style.display = "flex";
-    console.log(imagemURL);
 }
 
 botaoLimpar.addEventListener("click", () =>{
-    textareaDe.innerHTML="";
     textareaDe.value="";
-    textareaPara.innerHTML = "";
     textareaPara.value = "";
-    imagem.src = "";
-    divImagem.style.display = "none";
+    imagem.src = "../assets/image/imagem-inicio.png";
     labelProgresso.innerHTML ="";
     divProgresso.style.width ="0%";
     contentorProgresso.style.display="none";  
@@ -52,7 +46,7 @@ botaoImaginalizar.addEventListener("click",() =>{
             }
             console.log(response);
         }).then(function(data){
-            textareaDe.innerHTML= data.text;
+            textareaDe.value= data.text;
             labelProgresso.innerHTML = 'Feito';
             traduzir();
             console.log(data);
@@ -76,20 +70,14 @@ function traduzir(){
     let traduzirPara = selectTag[1].value;
 
     if(!texto){
-        window.alert("Sem texto a traduzir");
+        window.alert("Sem texto para traduzir");
         return;
     }
     textareaPara.setAttribute("placeholder", "Traduzindo...");
-
     let apiUrl = `https://api.mymemory.translated.net/get?q=${texto}&langpair=${traduzirDe}|${traduzirPara}`;
     fetch(apiUrl).then(res => res.json()).then(data =>{
+        // console.log(data);
         textareaPara.value = data.responseData.translatedText;
-        data.matches.forEach(data => {
-            if(data.id === 0){
-                textareaPara.value = data.translation;
-            }
-        });
-        textareaPara.setAttribute("placeholder", "Tradução");
     });
 };
 
@@ -98,40 +86,36 @@ function traduzir(){
 
 altoFalanteDe.addEventListener("click", () =>{
     if(!textareaDe.value)
-    {
         window.alert("Sem Texto Convertido");
-        return;
+    else
+    {
+        let uterrance = new SpeechSynthesisUtterance(textareaDe.value);
+        uterrance.lang = selectTag[0].value;
+        speechSynthesis.speak(uterrance);
     }
-    let uterrance = new SpeechSynthesisUtterance(textareaDe.value);
-    uterrance.lang = selectTag[0].value;
-    speechSynthesis.speak(uterrance);
 });
 
 altoFalantePara.addEventListener("click", () =>{
     if(!textareaPara.value)
-    {
         window.alert("Sem Texto Convertido");
-        return;
+    else{
+        let uterrance = new SpeechSynthesisUtterance(textareaPara.value);
+        uterrance.lang = selectTag[1].value;
+        speechSynthesis.speak(uterrance);
     }
-    let uterrance = new SpeechSynthesisUtterance(textareaPara.value);
-    uterrance.lang = selectTag[1].value;
-    speechSynthesis.speak(uterrance);
 });
 
 
 copiarDe.addEventListener("click", () => {
     if(!textareaDe.value)
-    {
         window.alert("Sem texto a ser copiado");
-        return;
-    }
-    navigator.clipboard.writeText(textareaDe.value);
+    else
+        navigator.clipboard.writeText(textareaDe.value);
 });
+
 copiarPara.addEventListener("click", () => {
     if(!textareaPara.value)
-    {
         window.alert("Sem texto a ser copiado");
-        return;
-    }
-    navigator.clipboard.writeText(textareaPara.value);
+    else
+        navigator.clipboard.writeText(textareaPara.value);
 });

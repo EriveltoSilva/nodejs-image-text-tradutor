@@ -1,0 +1,10 @@
+body{
+    background-color: blue;
+}
+footer{
+    background-color: rgba(0, 0, 0, 0.801);
+}
+footer p {
+    text-align: center;
+    color: white;
+}

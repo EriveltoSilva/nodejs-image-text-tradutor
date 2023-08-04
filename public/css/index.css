@@ -1,0 +1,45 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    height: 300vh;
+}
+
+header{
+    color: #fafafa;
+    background-color: rgba(0, 0, 0, 0.858);
+    display: flex;
+    justify-content: space-between;
+}
+header h1{
+    font-size: larger;
+    display: inline;
+    padding: 20px;
+}
+
+header nav ul{
+    text-align: right;
+    padding: 20px;
+}
+
+header nav ul li{
+    display: inline;
+    text-decoration: none;
+    padding: 20px;
+}
+header nav ul li:hover
+{
+    background-color: rgba(0, 0, 0, 0.4);
+}
+header nav ul li a{
+    color:#fafafa;
+    text-decoration:none;
+}
+
+.active{
+    text-decoration: underline;
+}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Lens Traductor - <%=title%></title>
+</head>
+<body>
+    <h1> 
+        <%
+            if(maintanance==true)
+            {
+        %>
+            Ops! Por agora estamos em manutenção. Pedimos desculpas pelo transtorno, voltaremos os serviços o mais rápido que pudermos.
+        <%
+        }
+        else
+        {
+        %>
+            Erro Interno no Lado do Servidor. Volte mais tarde!
+        <%
+        }
+        %>
+    </h1>
+</body>
+</html>

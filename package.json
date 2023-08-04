@@ -1,0 +1,49 @@
+{
+  "name": "my-lens-traductor",
+  "version": "2.0.0",
+  "description": "MY Lens Traductor with Node.Js",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Otlevire/MY-LENS-TRADUCTOR.git"
+  },
+  "keywords": [
+    "Traductor",
+    "translator",
+    "image",
+    "read",
+    "image",
+    "Tesseract",
+    "image",
+    "to",
+    "text",
+    "converter",
+    "idioms",
+    "languague",
+    "languague",
+    "traductor",
+    "image",
+    "based",
+    "text",
+    "traductor"
+  ],
+  "author": "Erivelto Silva (Otlevire)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Otlevire/MY-LENS-TRADUCTOR/issues"
+  },
+  "homepage": "https://github.com/Otlevire/MY-LENS-TRADUCTOR#readme",
+  "dependencies": {
+    "ejs": "^3.1.9",
+    "express": "^4.18.2",
+    "mysql2": "^3.6.0"
+  },
+  "devDependencies": {
+    "morgan": "^1.10.0"
+  }
+}

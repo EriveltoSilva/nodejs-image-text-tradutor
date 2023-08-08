@@ -1,0 +1,25 @@
+*{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --black-color:#020410;
+    --white-color: #ffffff; 
+    --gray-color: #F1F0F6; 
+    --blue-light-color: #026392;
+    --blue-color: #085a80;
+    --main-color:  #2e81e6;
+    --secondary-color:#ffffff;
+}
+
+body{ 
+    background-color: var(--secondary-color);
+} 
+
+
+.wrapper{
+    background-color: var(--main-color); 
+    color: var(--secondary-color);
+}

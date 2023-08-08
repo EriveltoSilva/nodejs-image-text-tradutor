@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-AO">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content=""> 
+    <meta name="author" content="Erivelto Clénio da Costa e Silva (Otlevire)">
+    <title> My Image Translator - Editar Conta</title>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.7.20/dist/sweetalert2.min.css " rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="../public/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../public/css/create-account.css">
+</head>
+
+
+<body class="text-primary">
+    <div class="mt-5 container rounded wrapper">
+        <main>
+            <div class="py-5 text-center">
+                <img class="d-block mx-auto mb-4 logo" src="./image/UcanWallet_branco.png" alt="" width="72" height="57">
+
+                <h1>Edição dos Dados da Conta</h1>
+            </div>
+
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <div class="col-md-7 col-lg-8" id="dadosPessoais">
+                    <form action="" method="post">
+                        <!-------------------------------------------------- Seccão 1 ------------------------------------------------------------------------  -->
+                        <section class="row g-2" id="sec1">
+                            <h2>Dados Essenciais</h2>
+                            <div class="col-12 col-sm-6">
+                                <label for="firstName" class="form-label">Primeiro name</label>
+                                <input type="text" name="firstName" class="form-control " id="firstName" value=""
+                                    required placeholder="Primeiro nome">
+                            </div>
+
+                            <div class="col-12 col-sm-6">
+                                <label for="lastName" class="form-label">Sobrenome</label>
+                                <input type="text" name="lastName" class="form-control" id="lastName" value=""
+                                    placeholder="Sobrenome" required>
+                            </div>
+
+                            <div class="col-12 col-sm-6">
+                                <label for="birthday" class="form-label">Data de Nascimento</label>
+                                <input type="date" name="birthday" class="form-control" id="birthday"
+                                    required>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <label for="nationality" class="form-label">Nacionalidade</label>
+                                <select name="nationality" class="form-select" id="nationality" required>
+                                    <option value="Angola">Angola</option>
+                                    <option value="Portugal">Portugal</option>
+                                </select>
+                            </div>
+                            
+                            <div class="col-12 col-sm-6">
+                                <label for="address" class="form-label">Rua e Casa</label>
+                                <input type="text" name="address" class="form-control" id="address"
+                                    placeholder="Ex: Rubra Casa 40" required>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <label for="phoneNumber" class="form-label">Telefone:</label>
+                                <input type="text" name="phoneNumber" class="form-control" id="phoneNumber"
+                                    placeholder="+244 940 811 141">
+                            </div>
+                            <div class="col-12 ">
+                                <label for="nativeLanguage" class="form-label">Idioma Materno</label>
+                                <select name="nativeLanguage" class="form-select" id="nativeLanguage" required>
+                                    <option value="Angola">Angola</option>
+                                    <option value="Portugal">Portugal</option>
+                                </select>
+                            </div>
+
+                            <div class="col-12 col-sm-6">
+                                <label for="gender" class="form-label">Gênero</label>
+                                <select name="gender" class="form-select" id="pais" required>
+                                    <option value="M" checked>Masculino</option>
+                                    <option value="F">Femenino</option>
+                                </select>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <label for="maritalStatus" class="form-label">Estado Cívil</label>
+                                <select name="maritalStatus" class="form-select" id="maritalStatus" required>
+                                    <option value="S" checked>Solteiro</option>
+                                    <option value="C">Casado</option>
+                                    <option value="V">Viúvo</option>
+                                    <option value="D">Divorciado</option>
+                                </select>
+                            </div>
+                            
+                        
+                        <!-------------------------------------------------- Seccão 3 ------------------------------------------------------------------------  -->
+                        <section class="row g-1  mt-5" id="sec3">
+                            <h4>Suas Credencias</h4>
+                            <div class="col-12 col-sm-6">
+                                <label for="username" class="form-label">Username</label>
+                                <div class="input-group has-validation">
+                                    <span class="input-group-text">@</span>
+                                    <input type="text" name="username" class="form-control disabled" id="username"
+                                        placeholder="Username" disabled>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-sm-6">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" name="email" class="form-control" id="email"
+                                    placeholder="you@example.com" disabled>
+                            </div>
+                        </section>
+
+                        <div class="col-12">
+                            <hr class="my-4">
+                            <!-- <div class="w-100 btn-group" role="group" aria-label="Basic example">
+                                <button type="button" id="voltarSec" class="btn btn-primary"><i
+                                        class='bx bx-chevron-left'></i></button>
+                                <button type="button" id="avancarSec" class="btn btn-primary"><i
+                                        class='bx bx-chevron-right'></i></button>
+                            </div> -->
+                            <button id="botaoCriarConta" class="mt-3 w-100 btn btn-primary btn-lg"
+                                type="submit">Salvar Dados
+                            </button>
+                            
+                            <a href="login.html">Voltar ao login</a>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </main>
+
+
+        <footer class="my-5 pt-5  text-center text-small">
+            <p class="mb-1 ">&copy; - 2023 My Image Translator</p>
+        </footer>
+    </div>
+
+</body>
+</html>

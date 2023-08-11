@@ -12,12 +12,14 @@ routes.get('/about', (req, resp)=>resp.render('about.ejs'));
 routes.get('/contacts', (req, resp)=>resp.render('contacts.ejs'));
 
 
+routes.get('/show-personal-datas/:id', UserController.show);
+routes.get('/total-translations/:id', TranslationController.getTotalTranslations)
 routes.get('/create-account', UserController.create);
 routes.get('/main/:id', MainController.getIn);
+routes.get('/my-searches/:id', MainController.getInMySearches);
 routes.post('/login/user', UserController.login);
 routes.post('/user/create', UserController.store);
 routes.post('/translation/create', TranslationController.create);
-
 
 routes.use((req, resp)=> resp.render('404.ejs'));
 export default routes;

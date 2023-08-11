@@ -1,11 +1,77 @@
 <!DOCTYPE html>
-<html lang="pt_AO">
+<html lang="pt-AO">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <%- include('./partials/links.ejs') %>
     <title>My Image Translator - Minhas Pesquisas</title>
+    <link rel="stylesheet" href="/css/my-searches.css">
 </head>
 <body>
-    <h1>Minhas Pesquisas</h1>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-primary" aria-label="Third navbar example">
+          <div class="container-fluid">
+            <h1>
+              <a class="navbar-brand" href="/main/<%=user.id%>">My Image Translator</a>
+            </h1>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03"
+            aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <div class="collapse navbar-collapse " id="navbarsExample03">
+            <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/main/<%=user.id %>">Home</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" href="/my-searches/<%=user.id %>">Minhas Pesquisas</a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link active" href="/login">Logout</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
+                  aria-expanded="false">Definições</a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/show-personal-datas/<% user.id %>">Ver Dados Pessoais</a></li>
+                    <li><a class="dropdown-item" href="./update-personal-datas/<% user.id %>">Alterar Dados Pessoais</a></li>
+                    <li><a class="dropdown-item" href="./delete-account/<% user.id %>">Eliminar Conta</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </header>
+      
+
+    <h1 class="text-center">Meus Textos e Suas  <% if(translations){%><%=translations.length %> <% } %>Traduções</h1>
+    
+    <div class="container-fluid">
+        <% if(translations){
+            translations.forEach(transl => { %>
+                <div class="d-flex justify-content-center  rounded translation-container">
+                    <div class="card mb-3 m-3" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Idioma:<%=transl.source_language%></h5>
+                            <p class="card-text">Data:<%=transl.translation_date%> </p>
+                            <p class="card-text">Texto:<br><%=transl.source_text%></p>
+                            <p>De:<%=transl.source_language%></p>
+                        </div>
+                    </div>
+                    <div class="card mb-3 m-3" style="width: 18rem;">
+                        <div class="card-body">
+                            <h5 class="card-title">Idioma:<%=transl.final_language%></h5>
+                            <p class="card-text">Data:<%=transl.translation_date%> </p>
+                            <p class="card-text"></p>
+                            <p class="card-text">Texto:<br><%=transl.final_text%></p>
+                            <p>Para:<%=transl.final_language%></p>
+                        </div>
+                    </div>
+                </div>
+
+            <%});
+        }%>
+    </div>
 </body>
 </html>

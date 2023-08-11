@@ -30,9 +30,9 @@ This is a Lens traductor + Text Tranlator web project that permit you to extract
 ## REQUISITOS FUNCIONAIS
 1- Mais de três idiomas disponiveis                            --> OK
 2- Traduzir tudo para idioma default do user                   --> OK
-3- Contador de tradução por user 
-4- Historico de testes traduzidos com imagem guardada
-5- Adiciona Idioma Pela Aplicação
-6- Responsividade
+3- Contador de tradução por user                               -->
+4- Historico de testes traduzidos com imagem guardada          -->
+5- Adiciona Idioma Pela Aplicação                              -->
+6- Responsividade                                              -->
 
-git push --set-upstream origin develop
+<!-- git push --set-upstream origin develop -->

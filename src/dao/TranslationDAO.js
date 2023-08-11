@@ -34,6 +34,7 @@ class TranslationDAO {
         });
     }
 
+
     findById(id) {
         return new Promise((resolve, reject)=>{
             const sql = "SELECT * FROM translation WHERE id=?;";
@@ -54,7 +55,30 @@ class TranslationDAO {
         });
     }
 
+    findByUserId(userId)
+    {
+        return new Promise((resolve, reject)=>{
+            const sql = "SELECT * FROM translation where id_user=?";
+            connection.query(sql, [userId],(error, result)=>{
+                if(error) reject("Erro Listando as Translations do Usuario."+error);
+                return resolve(result);
+            })
+        });
+    }
+
+    countMyTranslations(userId)
+    {
+        return new Promise((resolve, reject)=>{
+            const sql= "SELECT COUNT(*) as total FROM translation WHERE id_user=?;";
+            connection.query(sql, [userId], (error, result)=>{
+                if(error) reject(error);
+                return resolve(result[0].total);
+            });
+        });
+    }
     
 }
+
+
 
 export default new TranslationDAO;

@@ -1,6 +1,7 @@
 import UserDAO from "../dao/UserDAO.js";
 import PersonDAO from "../dao/PersonDAO.js";
 import { objectGenericResponse } from "../config/globalConfig.js";
+import { response } from "express";
 class UserController {
     /**
      * this function redirect to a create-account views
@@ -35,7 +36,10 @@ class UserController {
      * @param {*} resp 
      */
     show(req, resp) {
-
+        let userId = req.params.id;
+        UserDAO.findCompletedById(userId).then(user=>{
+            return resp.render('show-personal-datas.ejs', {user});
+        }).catch(error=>{resp.render('error.ejs')});
     }
 
     /**

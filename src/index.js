@@ -1,5 +1,5 @@
 // Server Listen Init
-import app from "./src/app/app.js";
+import app from "./app/app.js";
 
 let PORT = process.env.PORT || 12345;
 

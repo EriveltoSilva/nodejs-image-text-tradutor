@@ -4,13 +4,13 @@ import routes from './routes.js'
 import {maintanance} from '../config/globalConfig.js';
 
 const MAINTANANCE = false;
-const app = express();
+const app = express(); 
 
 /** Engine Register */
 app.set('view engine', 'ejs');
-app.set('views', 'views');
+app.set('views', 'views'); 
 
-/** Middlewares**/ 
+/** Middlewares Register**/ 
 app.use(express.json());
 app.use(morgan('tiny'));
 app.use((req, resp, next)=>maintanance(req, resp, next, MAINTANANCE));

@@ -8,12 +8,12 @@
     <title>My Image Translator - Login</title>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.7.20/dist/sweetalert2.min.css " rel="stylesheet">
-    <link rel="stylesheet" href="../public/css/login.css">
+    <link rel="stylesheet" href="/css/login.css">
 </head>
 
 <body class="d-flex justify-content-center align-items-center py-4 bg-body-tertiary">
     <div class="wrapper">
-        <form action="" method="post">
+        <form action="/login/user" method="post">
             <h1>Login</h1>
             <div class="input-box">
                 <input type="email" name="email" id="email" placeholder="Email" required>
@@ -27,18 +27,18 @@
                 <label for=""><input type="checkbox" name="" id="">Remember-me</label>
                 <a href="#">Esqueceu a sua Senha?</a>
             </div>
-            <button type="submit" class="btn">Iniciar Secção</button>
+            <button type="submit" class="btn" id="btn">Iniciar Secção</button>
 
             <div class="register-link">
                 <p>Não tem um conta ainda? 
-                    <a href="./create-account.html">Cadastrar-me</a>
+                    <a href="/create-account">Cadastrar-me</a>
                 </p>
             </div>
         </form>
     </div>
 
-    <script src=" https://cdn.jsdelivr.net/npm/sweetalert2@11.7.20/dist/sweetalert2.all.min.js "></script>
-    <script src="../assets/js/login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.20/dist/sweetalert2.all.min.js "></script>
+    <script src="/js/login.js"></script>
 </body>
 
 </html>

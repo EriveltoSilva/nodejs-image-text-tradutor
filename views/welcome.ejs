@@ -3,13 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><%=title%></title>
+    <title>My Image Translator - Bemvindo</title>
     <link rel="stylesheet" href="/css/header-footer.css">
 </head>
 <body>
     <h1>
-        Bemvindo ao EJS <%=username%>!
+        Bemvindo ao EJS My Image Translator
     </h1>
+
+    <ul>
+        <li><a href="/login">Login</a></li>
+        <li><a href="/create-account">Cadastro</a></li>
+        <li><a href="/about">Sobre</a></li>
+        <li><a href="/contacts">Contactos</a></li>
+    </ul>
     <!-- <img src="/image/imagem-inicio.png" alt=""> -->
     <%- include('./partials/footer.ejs') %>
 

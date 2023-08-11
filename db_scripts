@@ -4,11 +4,12 @@ create table person(
 	id int auto_increment primary key,
     first_name varchar(50) not null,
     last_name varchar(50) not null, 
-    birthday datetime not null,
+    bi varchar(20) not null unique,
+    birthday date not null,
     gender char(1) check(gender = 'M' or gender = 'F') default 'M',
     marital_status char(1) check (marital_status ='S' or marital_status='C' or marital_status = 'D' or marital_status = 'V') default 'S',
     nationality varchar(35),
-    endereco varchar(75)
+    address varchar(75)
 );
 
 create table phone_number(
@@ -23,8 +24,8 @@ create table user(
     email varchar(50) not null unique,
     password varchar(32) not null,
     username varchar(35) not null unique,
-    native_languague varchar(5) not null,
-    ip_person int references person(id)
+    native_language varchar(5) not null,
+    id_person int references person(id)
 );
 
 create table translation(

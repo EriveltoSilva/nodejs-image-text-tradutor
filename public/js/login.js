@@ -1,40 +1,51 @@
-const URL_SERVER = "";
 const email = document.getElementById('email');
-const senha = document.getElementById('senha');
-const botaoEntrar= document.getElementById('botaoEntrar');
+const password = document.getElementById('password');
+const button = document.getElementById('btn');
 
 
 
-botaoEntrar.addEventListener("click", (e)=>{
+button.addEventListener("click", (e)=>{
     e.preventDefault();
-    let resultado = isValidado();
-    if(resultado===null)
-        ;//enviarDados();
+    let result = validateForm();
+    if(result===null)
+        sendData();
     else
-        Swal.fire('Validação de Login!',resultado,'error');
+        Swal.fire('Login!',result,'error');
 });
 
 
-function isValidado(){
+function validateForm(){
     let TAMANHO_MINIMO_SENHA = 4;
     let regex = /\S+@\S+\.\S+/;
-
     if(email.value==="")
         return "Campo Email Vazio!";
     else if(!regex.test(email.value))
         return "O email não está no formato: name@example.com! Retifique por favor.";
-    else if(senha.value==="")
+    else if(password.value==="")
         return "Campo Senha Vazio!";
-    else if(senha.value.length < TAMANHO_MINIMO_SENHA)
+    else if(password.value.length < TAMANHO_MINIMO_SENHA)
         return "A senha deve conter no mínimo "+TAMANHO_MINIMO_SENHA+" caracteres!";
     return null;
 }
 
-function enviarDados()
+function sendData()
 {
-    fetch(URL_SERVER).then(resp => resp.json()).then(data=>{
-       console.log("Resposta Recebida:"+data); 
+    fetch('/login/user', {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({email:email.value, password:password.value}) 
+    })
+    .then(resp => resp.json())
+    .then(data=>{
+        if(data.status=='success')
+            window.location.assign("/main/"+data.data);
+        Swal.fire('Alerta',data.message,data.status)
+        clean();
     }).catch(exception=>{
-        console.log("Erro:"+exception);
-    });
+        console.log(exception);
+    }); 
+}
+
+function clean() {
+    password.value = "";
 }

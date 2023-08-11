@@ -84,3 +84,20 @@ function loadCountry() {
         nativeLanguage.insertAdjacentHTML("beforeend", option);
     }
 }
+
+function clean() {
+    firstName.value="";    
+    lastName.value="";   
+    bi.value=""; 
+    birthday.value="";   
+    nationality.value=""; 
+    address.value="";  
+    phoneNumber.value=""; 
+    nativeLanguage.value="";
+    gender.value="";
+    maritalStatus.value="";
+    username.value="";   
+    email.value=""; 
+    password1.value="";    
+    password2.value="";  
+}

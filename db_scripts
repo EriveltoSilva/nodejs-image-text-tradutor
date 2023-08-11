@@ -35,5 +35,5 @@ create table translation(
     source_language varchar(5) not null,
     final_language varchar(5) not null,
 	translation_date timestamp default current_timestamp, 
-    id_user int references user(id)
+    id_user int references user(id) not null
 );

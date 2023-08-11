@@ -84,7 +84,7 @@ class UserController {
         UserDAO.isUser(user)
         .then((response)=>{
             if(response.length>0)
-                return resp.json(objectGenericResponse('success', 'success', response[0].id, 1));
+                return resp.json(objectGenericResponse('success', 'success', response[0], 1));
             return resp.json(objectGenericResponse("warning", "Usuario Inválido", [], 0));
         })
         .catch((error)=>{

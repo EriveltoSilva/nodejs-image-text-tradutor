@@ -14,6 +14,9 @@ const finalSpeaker = document.getElementById("finalSpeaker");
 const sourceCopy = document.getElementById("sourceCopy");
 const finalCopy = document.getElementById("finalCopy");
 
+const userNativeLanguage = document.getElementById("userNativeLanguage").value;
+const userId = document.getElementById("userId").value;
+
 fileSelector.onchange = () =>{
     let file  = fileSelector.files[0];
     let imageURL = URL.createObjectURL(file);
@@ -53,7 +56,17 @@ btnExtractText.addEventListener("click",() =>{
 
 selectTag.forEach((tag, id) =>{
     for(let countryCod in paises){
-        let selected = id == 0 ? countryCod == "en-GB" ? "selected" : "" : countryCod == "pt-PT" ? "selected" : "";
+        let selected ="";
+        if(id==0)
+        {
+            if(userNativeLanguage=="en-GB")
+                selected = (countryCod == "pt-PT")? "selected":"";
+            else
+                selected = (countryCod == "en-GB")? "selected":"";
+        }
+        else
+            selected = (countryCod == userNativeLanguage)? "selected":"";
+        // let selected = id == 0 ? countryCod == "en-GB" ? "selected" : "" : countryCod == "pt-PT" ? "selected" : "";
         let option = `<option ${selected} value="${countryCod}">${paises[countryCod]}</option>`;
         tag.insertAdjacentHTML("beforeend", option);
     }
@@ -64,18 +77,18 @@ btnTranslate.addEventListener("click", translate);
 
 function translate(){
     let text = sourceText.value.trim();
-    let textFromSource = selectTag[0].value;
-    let textToFinal = selectTag[1].value;
-
+    let sourceLanguage = selectTag[0].value;
+    let finalLanguage = selectTag[1].value;
     if(!text){
         Swal.fire('Ups!', 'Sem texto para traduzir', 'warning');
         return;
     }
     finalText.setAttribute("placeholder", "Traduzindo...");
-    let apiUrl = `https://api.mymemory.translated.net/get?q=${text}&langpair=${textFromSource}|${textToFinal}`;
+    let apiUrl = `https://api.mymemory.translated.net/get?q=${text}&langpair=${sourceLanguage}|${finalLanguage}`;
     fetch(apiUrl).then(res => res.json()).then(data =>{
         // console.log(data);
         finalText.value = data.responseData.translatedText;
+        sendTranslation(sourceLanguage, finalLanguage, text, data.responseData.translatedText);
     });
 };
 
@@ -117,3 +130,14 @@ finalCopy.addEventListener("click", () => {
     else
         navigator.clipboard.writeText(finalText.value);
 });
+
+function sendTranslation(sourceLanguage, finalLanguage, sourceText, finalText) { 
+    fetch('/translation/create', {
+        method:'POST', 
+        headers:{"Content-Type":"application/json"}, 
+        body:JSON.stringify({userId, sourceLanguage, finalLanguage, sourceText, finalText})
+    })
+    .then(response=>response.json())
+    .then((data)=>{console.log(data);})
+    .catch((error)=>console.error(error))
+ }

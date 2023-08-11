@@ -2,8 +2,6 @@ const email = document.getElementById('email');
 const password = document.getElementById('password');
 const button = document.getElementById('btn');
 
-
-
 button.addEventListener("click", (e)=>{
     e.preventDefault();
     let result = validateForm();
@@ -12,7 +10,6 @@ button.addEventListener("click", (e)=>{
     else
         Swal.fire('Login!',result,'error');
 });
-
 
 function validateForm(){
     let TAMANHO_MINIMO_SENHA = 4;
@@ -37,9 +34,9 @@ function sendData()
     })
     .then(resp => resp.json())
     .then(data=>{
-        if(data.status=='success')
-            window.location.assign("/main/"+data.data);
-        Swal.fire('Alerta',data.message,data.status)
+        if(data.status=='success')        
+            window.location.assign("/main/"+data.data.id);
+        Swal.fire('Ups!',data.message,data.status)
         clean();
     }).catch(exception=>{
         console.log(exception);

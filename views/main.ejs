@@ -14,6 +14,12 @@
 </head>
 
 <body class="">
+  <section>
+    <input type="hidden" name="" id="userNativeLanguage" value="<%=user.native_language%>">
+    <input type="hidden" name="" id="userId" value="<%=user.id%>">
+
+  </section>
+  
   <header>
     <nav class="navbar navbar-expand-sm navbar-dark bg-primary" aria-label="Third navbar example">
       <div class="container-fluid">
@@ -21,12 +27,12 @@
           <a class="navbar-brand" href="#">My Image Translator</a>
         </h1>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample03"
-          aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse " id="navbarsExample03">
-          <ul class="navbar-nav me-auto mb-2 mb-sm-0">
+        aria-controls="navbarsExample03" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <div class="collapse navbar-collapse " id="navbarsExample03">
+        <ul class="navbar-nav me-auto mb-2 mb-sm-0">
             <li class="nav-item">
               <a class="nav-link active" aria-current="page" href="#">Home</a>
             </li>
@@ -38,7 +44,7 @@
             </li>
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown"
-                aria-expanded="false">Definições</a>
+              aria-expanded="false">Definições</a>
               <ul class="dropdown-menu">
                 <li><a class="dropdown-item" href="/show-personal-datas">Ver Dados Pessoais</a></li>
                 <li><a class="dropdown-item" href="./update-personal-datas">Alterar Dados Pessoais</a></li>
@@ -46,18 +52,22 @@
               </ul>
             </li>
           </ul>
+
+          <div class="user-container text-light d-flex justify-content-rigth">
+            <p>Bemvindo <strong><%=user.username%></strong></p>
+          </div>
         </div>
       </div>
     </nav>
   </header>
-
+  
   <main>
     <div class="container-fluid   mt-5">
       <div class=" d-flex justify-content-evenly flex-sm-row flex-column m-t-sm 5">
         <div class="card shadow-sm">
           <div class="">
             <img id="imageLoaded" src="/image/imagem-inicio.png" 
-              alt="Imagem de documento para digitalizar e processar no My Lens Tractudor" class="border-bottom w-100">
+            alt="Imagem de documento para digitalizar e processar no My Lens Tractudor" class="border-bottom w-100">
             <div class="card-body">
               <p class="card-text">
                 Escolha a Imagem que deseja digitalizar!

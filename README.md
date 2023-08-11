@@ -34,3 +34,5 @@ This is a Lens traductor + Text Tranlator web project that permit you to extract
 4- Historico de testes traduzidos com imagem guardada
 5- Adiciona Idioma Pela Aplicação
 6- Responsividade
+
+git push --set-upstream origin develop

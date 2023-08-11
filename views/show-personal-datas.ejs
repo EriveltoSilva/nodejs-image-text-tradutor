@@ -82,7 +82,7 @@
                                 <select name="maritalStatus" class="form-select" id="maritalStatus" disabled>
                                     <% 
                                         let maritalStatus = "";
-                                        switch(user.maritalStatus)
+                                        switch(user.marital_status)
                                         {
                                             case 'S': maritalStatus ="SOLTEIRO"; break;
                                             case 'C': maritalStatus ="CASADO"; break;
@@ -122,11 +122,11 @@
                                 <button type="button" id="avancarSec" class="btn btn-primary"><i
                                         class='bx bx-chevron-right'></i></button>
                             </div> -->
-                            <button id="buttonCreateAccount" class="mt-3 w-100 btn btn-primary btn-lg"
+                            <!-- <button id="buttonCreateAccount" class="mt-3 w-100 btn btn-primary btn-lg"
                                 type="button">Criar Conta
-                            </button>
+                            </button> -->
                             
-                            <a href="/login" class="text-light link-voltar-login">Voltar ao login</a>
+                            <a href="/main/<%=user.id%>" class="text-light link-voltar-login">Voltar ao menu</a>
                         </div>
                     </form>
                 </div>

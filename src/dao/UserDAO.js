@@ -36,7 +36,7 @@ class UserDAO {
     
     findCompletedById(id) {
         return new Promise((resolve, reject)=>{
-            const sql = "SELECT * FROM user INNER JOIN person WHERE user.id_person=person.id and user.id=?;";
+            const sql = "SELECT person.*, user.* FROM user INNER JOIN person WHERE user.id_person=person.id and user.id=?;";
             connection.query(sql, [id], (error, result) => {
                 if (error) return reject("Erro Selecionando o User pelo ID.\n"+error);
                 return resolve(result[0]); 

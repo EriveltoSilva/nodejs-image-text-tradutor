@@ -38,6 +38,7 @@ class UserController {
     show(req, resp) {
         let userId = req.params.id;
         UserDAO.findCompletedById(userId).then(user=>{
+            console.log(user);
             return resp.render('show-personal-datas.ejs', {user});
         }).catch(error=>{resp.render('error.ejs')});
     }

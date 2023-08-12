@@ -135,7 +135,7 @@ function sendTranslation(sourceLanguage, finalLanguage, sourceText, finalText) {
     fetch('/translation/create', {
         method:'POST', 
         headers:{"Content-Type":"application/json"}, 
-        body:JSON.stringify({userId, sourceLanguage, finalLanguage, sourceText, finalText})
+        body:JSON.stringify({idUser:userId, sourceLanguage, finalLanguage, sourceText, finalText})
     })
     .then(response=>response.json())
     .then((data)=>{console.log(data);})

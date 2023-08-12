@@ -93,7 +93,10 @@ class UserController {
      * @param {*} resp 
      */
     destroy(req, resp) {
-        
+        let userId = req.params.id;
+        UserDAO.delete(userId).then(response=>{
+            return resp.render('login.ejs');
+        }).catch(error=>{ resp.render("error.ejs", {title:'Erro deletando conta', error, maintanance:false});})
     }
 
     login(req, resp) {

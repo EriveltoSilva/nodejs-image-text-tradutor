@@ -21,6 +21,7 @@ routes.get('/my-searches/:id', MainController.getInMySearches);
 routes.post('/login/user', UserController.login);
 routes.post('/user/create', UserController.store);
 routes.put('/user/edit/:id', UserController.update);
+routes.delete('/user/delete/:id', UserController.destroy);
 routes.post('/translation/create', TranslationController.create);
 
 routes.use((req, resp)=> resp.render('404.ejs'));

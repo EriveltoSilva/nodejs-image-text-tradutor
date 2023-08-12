@@ -14,12 +14,14 @@ class PersonDAO {
     }
 
     update(user) {
-        const sql = "UPDATE person set first_name=?, last_name=?, birthday=?, gender=?, marital_status=?, nationality=?, address=? WHERE bi=?";
-        connection.query(sql, [user.firstName, user.lastName, user.birthday, user.gender, user.maritalStatus, user.nationality, user.address, user.bi], (error, result) => {
-            if (error) 
-                return reject("Erro Actualizando os dados da Pessoa no banco.\nErro:" + error);
-            else if(result.affectedRows>0)
-                return resolve(result.affectedRows);
+        return new Promise((resolve, reject)=>{
+            const sql ="UPDATE person set first_name=?, last_name=?,  gender=?, marital_status=?, address=? WHERE bi=?";
+            connection.query(sql, [user.firstName, user.lastName, user.gender, user.maritalStatus, user.address, user.bi], (error, result) => {
+                if (error) 
+                    return reject("Erro Actualizando os dados da Pessoa no banco.\n" + error);
+                else if(result.affectedRows>0)
+                    return resolve(result.affectedRows);
+            });
         });
     }
 

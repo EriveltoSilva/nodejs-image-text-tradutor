@@ -16,9 +16,11 @@ routes.get('/show-personal-datas/:id', UserController.show);
 routes.get('/total-translations/:id', TranslationController.getTotalTranslations)
 routes.get('/create-account', UserController.create);
 routes.get('/main/:id', MainController.getIn);
+routes.get('/user/edit-account/:id', UserController.getInEditAccount);
 routes.get('/my-searches/:id', MainController.getInMySearches);
 routes.post('/login/user', UserController.login);
 routes.post('/user/create', UserController.store);
+routes.put('/user/edit/:id', UserController.update);
 routes.post('/translation/create', TranslationController.create);
 
 routes.use((req, resp)=> resp.render('404.ejs'));

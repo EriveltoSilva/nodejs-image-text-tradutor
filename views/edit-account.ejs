@@ -2,9 +2,9 @@
 <html lang="pt-AO">
 <head>
     <meta name="description" content=""> 
-    <%- include('./partials/links.ejs') %>
-    <title> My Image Translator - Editar Conta</title>
-    <link rel="stylesheet" href="../public/css/create-account.css">
+    <%-include('./partials/links.ejs') %>
+    <title> My Image Translator - Meus Dados</title>
+    <link rel="stylesheet" href="/css/create-account.css">
 </head>
 
 
@@ -12,74 +12,65 @@
     <div class="mt-5 container rounded wrapper">
         <main>
             <div class="py-5 text-center">
-                <img class="d-block mx-auto mb-4 logo" src="./image/UcanWallet_branco.png" alt="" width="72" height="57">
+                <img class="d-block mx-auto mb-4 logo" src="/image/imagem-inicio.png" alt="" width="72" height="57">
 
-                <h1>Edição dos Dados da Conta</h1>
+                <h1>Meus Dados</h1>
             </div>
 
             <div class="d-flex flex-column justify-content-center align-items-center">
                 <div class="col-md-7 col-lg-8" id="dadosPessoais">
-                    <form action="" method="post">
+                    <form action="/user/create" method="post" id="formulario">
+                       <input type="hidden" name="" id="userId" value="<%=user.id%>">
                         <!-------------------------------------------------- Seccão 1 ------------------------------------------------------------------------  -->
                         <section class="row g-2" id="sec1">
                             <h2>Dados Essenciais</h2>
-                            <div class="col-12 col-sm-6">
+                            <div class="col-12">
                                 <label for="firstName" class="form-label">Primeiro name</label>
-                                <input type="text" name="firstName" class="form-control " id="firstName" value=""
-                                    required placeholder="Primeiro nome">
+                                <input type="text" name="firstName" class="form-control " id="firstName" value="<%=user.first_name %>"
+                                     placeholder="Primeiro nome" >
                             </div>
 
-                            <div class="col-12 col-sm-6">
+                            <div class="col-12">
                                 <label for="lastName" class="form-label">Sobrenome</label>
-                                <input type="text" name="lastName" class="form-control" id="lastName" value=""
-                                    placeholder="Sobrenome" required>
+                                <input type="text" name="lastName" class="form-control" id="lastName" value="<%=user.last_name %>"
+                                    placeholder="Sobrenome"  >
                             </div>
 
-                            <div class="col-12 col-sm-6">
-                                <label for="birthday" class="form-label">Data de Nascimento</label>
-                                <input type="date" name="birthday" class="form-control" id="birthday"
-                                    required>
+                            <div class="col-12">
+                                <label for="bi" class="form-label">Nº Bilhete</label>
+                                <input type="text" name="bi" class="form-control" id="bi" value="<%=user.bi %>"
+                                    placeholder="Ex: 0040000012350L040" disabled >
                             </div>
-                            <div class="col-12 col-sm-6">
-                                <label for="nationality" class="form-label">Nacionalidade</label>
-                                <select name="nationality" class="form-select" id="nationality" required>
-                                    <option value="Angola">Angola</option>
-                                    <option value="Portugal">Portugal</option>
-                                </select>
-                            </div>
-                            
-                            <div class="col-12 col-sm-6">
+
+
+                            <div class="col-12">
                                 <label for="address" class="form-label">Rua e Casa</label>
                                 <input type="text" name="address" class="form-control" id="address"
-                                    placeholder="Ex: Rubra Casa 40" required>
-                            </div>
-                            <div class="col-12 col-sm-6">
-                                <label for="phoneNumber" class="form-label">Telefone:</label>
-                                <input type="text" name="phoneNumber" class="form-control" id="phoneNumber"
-                                    placeholder="+244 940 811 141">
-                            </div>
-                            <div class="col-12 ">
-                                <label for="nativeLanguage" class="form-label">Idioma Materno</label>
-                                <select name="nativeLanguage" class="form-select" id="nativeLanguage" required>
-                                    <option value="Angola">Angola</option>
-                                    <option value="Portugal">Portugal</option>
-                                </select>
+                                    placeholder="Ex: Rubra Casa 40" value="<%=user.address%>"  > 
                             </div>
 
-                            <div class="col-12 col-sm-6">
+                            <div class="col-12">
                                 <label for="gender" class="form-label">Gênero</label>
-                                <select name="gender" class="form-select" id="pais" required>
-                                    <option value="M" checked>Masculino</option>
-                                    <option value="F">Femenino</option>
+                                <select name="gender" class="form-select" id="gender" >
+                                    <% 
+                                        let gM="";
+                                        let gF="";
+                                        if(user.gender=="MASCULINO")
+                                            gM="checked";
+                                        else
+                                            gF="checked";
+                                    %>
+                                    <option value="M" <%=gM%>> MASCULINO</option>
+                                    <option value="F" <%=gF%>> FEMENINO</option>
                                 </select>
                             </div>
-                            <div class="col-12 col-sm-6">
+                            <div class="col-12">
                                 <label for="maritalStatus" class="form-label">Estado Cívil</label>
-                                <select name="maritalStatus" class="form-select" id="maritalStatus" required>
-                                    <option value="S" checked>Solteiro</option>
-                                    <option value="C">Casado</option>
-                                    <option value="V">Viúvo</option>
-                                    <option value="D">Divorciado</option>
+                                <select name="maritalStatus" class="form-select" id="maritalStatus" >
+                                    <option value="S" checked>SOLTEIRO</option>
+                                    <option value="C">CASADO</option>
+                                    <option value="V">VIÚVO</option>
+                                    <option value="D">DIVORCIADO</option>
                                 </select>
                             </div>
                             
@@ -87,19 +78,29 @@
                         <!-------------------------------------------------- Seccão 3 ------------------------------------------------------------------------  -->
                         <section class="row g-1  mt-5" id="sec3">
                             <h4>Suas Credencias</h4>
-                            <div class="col-12 col-sm-6">
+                            <div class="col-12">
                                 <label for="username" class="form-label">Username</label>
                                 <div class="input-group has-validation">
                                     <span class="input-group-text">@</span>
-                                    <input type="text" name="username" class="form-control disabled" id="username"
-                                        placeholder="Username" disabled>
+                                    <input type="text" name="username" class="form-control" id="username"
+                                        placeholder="Username" value="<%=user.username %>" disabled>
                                 </div>
                             </div>
 
-                            <div class="col-12 col-sm-6">
+                            <div class="col-12">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" name="email" class="form-control" id="email"
-                                    placeholder="you@example.com" disabled>
+                                    placeholder="you@example.com" value="<%=user.email%>" disabled>
+                            </div>
+                            <div class="col-12">
+                                <label for="password1" class="form-label">Password</label>
+                                <input type="password" name="password1" class="form-control" id="password1"
+                                    placeholder="Password" value="" required>
+                            </div>
+                            <div class="col-12">
+                                <label for="password2" class="form-label">Confirme a Password</label>
+                                <input type="password" name="password2" class="form-control" id="password2"
+                                    placeholder="Confirmação da Password" value="" required>
                             </div>
                         </section>
 
@@ -111,11 +112,11 @@
                                 <button type="button" id="avancarSec" class="btn btn-primary"><i
                                         class='bx bx-chevron-right'></i></button>
                             </div> -->
-                            <button id="botaoCriarConta" class="mt-3 w-100 btn btn-primary btn-lg"
-                                type="submit">Salvar Dados
+                            <button id="buttonSalveDatas" class="mt-3 w-100 btn btn-primary btn-lg"
+                                type="button">Salvar Dados
                             </button>
                             
-                            <a href="login.html">Voltar ao login</a>
+                            <a href="/main/<%=user.id%>" class="text-light link-voltar-login">Voltar ao menu</a>
                         </div>
                     </form>
                 </div>
@@ -128,6 +129,7 @@
             <p class="mb-1 ">&copy; - 2023 My Image Translator</p>
         </footer>
     </div>
-
+    <script src="/js/countries.js"></script>
+    <script src="/js/edit-account.js"></script>
 </body>
 </html>

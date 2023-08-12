@@ -8,7 +8,8 @@ class MainController{
         .then((user)=>{
             resp.render('main.ejs', {user});
         })
-        .catch((error)=> resp.render('error.ejs', {error}));
+        .catch((error)=> resp.render('error.ejs', {title:'Erro Pegendo o User no Main GetIn', maintanance:false, error}));
+
     }
 
     getInMySearches(req, resp)

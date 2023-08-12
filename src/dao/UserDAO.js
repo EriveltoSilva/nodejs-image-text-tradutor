@@ -14,8 +14,8 @@ class UserDAO {
 
     update(user) {
         return new Promise((resolve, reject) => {
-            const sql = "UPDATE user SET password=?, username=?, native_language=? WHERE email=?;";
-            connection.query(sql, [user.password1, user.username, user.nativeLanguage, user.email], (error, result) => {
+            const sql = "UPDATE user SET password=? WHERE email=?;";
+            connection.query(sql, [user.password1,  user.email], (error, result) => {
                 if (error)
                     return reject("Erro Actualizando os dados do User no banco.\nErro:" + error);
                 return resolve(result.affectedRows);
